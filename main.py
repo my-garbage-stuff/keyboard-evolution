@@ -38,10 +38,8 @@ def get_score(harf):
     else:
         return 0
     row = int(duzen.index(harf) / 12)
-    if row == 0 :
+    if row == 0 or row == 2:
         return ret + 1
-    elif row == 1:
-        return ret + 2
     else:
         return ret
 
