@@ -26,14 +26,14 @@ def get_score(harf):
     ret = 0
     if harf not in duzen: # invalid character ignored
         return 0
-    num = duzen.index(harf) % 12 + 1
-    if num == 4 or num == 7: # 1. finger
+    num = duzen.index(harf) % 12 
+    if num == 3 or num == 6: # 1. finger
         ret = 4
-    elif num == 3 or num == 5 or num == 6 or num == 8: # 2. finger or move 1. finger
+    elif num == 2 or num == 6 or num == 5 or num == 7: # 2. finger or move 1. finger
         ret = 3
-    elif num == 2 or num == 9: # 3. finger
+    elif num == 1 or num == 8: # 3. finger
         ret = 2
-    elif num == 1 or num == 10: # 4. finger
+    elif num == 0 or num == 9: # 4. finger
         ret = 1
     else: # move 4. finger
         return 0
@@ -60,7 +60,8 @@ def mutation():
 best_score = get_type_score()
 trynum = 0
 while True:
-    mutation()
+    for i in range(1,int(len(duzen)/2)):
+        mutation()
     trynum += 1
     score = get_type_score()
     if best_score > score:
