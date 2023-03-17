@@ -28,10 +28,12 @@ def get_score(harf):
     else:
         return 0
     row = int(duzen.index(harf) / 12)
-    if row == 0 or row == 2:
-        return ret + 0
-    else:
+    if row == 0 :
         return ret + 1
+    elif row == 1:
+        return ret + 2
+    else:
+        return ret
 
 import random
 
@@ -47,12 +49,20 @@ def mutation():
     duzen = duzen.replace("@",k)
 
 best_score = get_type_score()
+trynum = 0
 while True:
     mutation()
+    trynum += 1
     score = get_type_score()
     if best_score > score:
         best_duzen = duzen
         best_score = score
-        print(str(best_score)+"\n"+best_duzen[0:12]+"\n"+best_duzen[12:24]+"\n"+best_duzen[24:]+"\n\n")
+        print("try: {}\nscore: {}\n  {}\n  {}\n  {}\n".format(
+            str(trynum),
+            str(best_score),
+            best_duzen[0:12],
+            best_duzen[12:24],
+            best_duzen[24:]
+        ))
     else:
         duzen = best_duzen
