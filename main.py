@@ -2,7 +2,7 @@
 duzen="abcçdefgğhiıjklmnoöprsştuüvyzxwq.,"
 best_score = None
 best_duzen = duzen
-data = open("text","r").read()
+data = open("text","r").read().lower()
 
 cdata = {}
 
@@ -64,7 +64,7 @@ while True:
         mutation()
     trynum += 1
     score = get_type_score()
-    if best_score > score:
+    if best_score < score:
         best_duzen = duzen
         best_score = score
         print("try: {}\nscore: {}\n  {}\n  {}\n  {}\n".format(
