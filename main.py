@@ -4,11 +4,21 @@ best_score = None
 best_duzen = duzen
 data = open("text","r").read()
 
+cdata = {}
+
+# train data set from text
+for c in data:
+    if c in cdata:
+        cdata[c] += 1
+    else:
+        cdata[c] = 1
+
 def get_type_score():
     """type text and get score"""
     ret = 0
-    for c in data:
-        ret += get_score(c)
+    for c in duzen:
+        if c in cdata:
+            ret += cdata[c]*get_score(c)
     return ret
 
 def get_score(harf):
