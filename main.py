@@ -53,14 +53,14 @@ def mutation():
     j = random.randint(0, len(duzen)-1)
     c = duzen[i]
     k = duzen[j]
-    duzen = duzen.replace(c,"@")
+    duzen = best_duzen.replace(c,"@")
     duzen = duzen.replace(k,c)
     duzen = duzen.replace("@",k)
 
 best_score = get_type_score()
 trynum = 0
 while True:
-    for i in range(1,int(len(duzen)/2)):
+    for i in range(1,int(len(duzen)/4)):
         mutation()
     trynum += 1
     score = get_type_score()
