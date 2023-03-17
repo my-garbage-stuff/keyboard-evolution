@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-duzen="qwertyuıopğüasdfghjklşi,zxcvbnmöç."
+duzen="abcçdefgğhiıjklmnoöprsştuüvyzxwq.,"
 best_score = None
 best_duzen = duzen
 data = open("text","r").read()
