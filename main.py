@@ -24,24 +24,25 @@ def get_type_score():
 def get_score(harf):
     """get character score by coordinate"""
     ret = 0
-    if harf not in duzen:
+    if harf not in duzen: # invalid character ignored
         return 0
     num = duzen.index(harf) % 12 + 1
-    if num == 4 or num == 7:
+    if num == 4 or num == 7: # 1. finger
         ret = 4
-    elif num == 3 or num == 5 or num == 6 or num == 8:
+    elif num == 3 or num == 5 or num == 6 or num == 8: # 2. finger or move 1. finger
         ret = 3
-    elif num == 2 or num == 9:
+    elif num == 2 or num == 9: # 3. finger
         ret = 2
-    elif num == 1 or num == 10:
+    elif num == 1 or num == 10: # 4. finger
         ret = 1
-    else:
+    else: # move 4. finger
         return 0
+
     row = int(duzen.index(harf) / 12)
-    if row == 0 or row == 2:
-        return ret + 1
-    else:
+    if row == 0 or row == 2: # top and bottom row
         return ret
+    else:
+        return ret + 1 # midle row
 
 import random
 
