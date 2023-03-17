@@ -1,19 +1,16 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 duzen="abcçdefgğhiıjklmnoöprsştuüvyzxwq.,"
 best_score = None
 best_duzen = duzen
 data = open("text","r").read()
 
-
 def get_type_score():
-    """type text and calculate score"""
     ret = 0
     for c in data:
         ret += get_score(c)
     return ret
 
 def get_score(harf):
-    """get character score by coorditane"""
     ret = 0
     if harf not in duzen:
         return 0
@@ -37,7 +34,6 @@ def get_score(harf):
 import random
 
 def mutation():
-    """random mutation generator"""
     global duzen
     i = random.randint(0, len(duzen)-1)
     j = random.randint(0, len(duzen)-1)
@@ -54,6 +50,6 @@ while True:
     if best_score > score:
         best_duzen = duzen
         best_score = score
-        print(score, best_duzen)
+        print(str(best_score)+"\n"+best_duzen[0:12]+"\n"+best_duzen[12:24]+"\n"+best_duzen[24:]+"\n\n")
     else:
         duzen = best_duzen
