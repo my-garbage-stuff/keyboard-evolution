@@ -5,23 +5,25 @@ best_duzen = duzen
 data = open("text","r").read()
 
 def get_type_score():
+    """type text and get score"""
     ret = 0
     for c in data:
         ret += get_score(c)
     return ret
 
 def get_score(harf):
+    """get character score by coordinate"""
     ret = 0
     if harf not in duzen:
         return 0
     num = duzen.index(harf) % 12 + 1
-    if num == 5 or num == 4:
+    if num == 4 or num == 7:
         ret = 4
-    elif num == 3 or num == 6:
+    elif num == 3 or num == 5 or num == 6 or num == 8:
         ret = 3
-    elif num == 2 or num == 7:
+    elif num == 2 or num == 9:
         ret = 2
-    elif num == 1 or num == 8:
+    elif num == 1 or num == 10:
         ret = 1
     else:
         return 0
@@ -34,6 +36,7 @@ def get_score(harf):
 import random
 
 def mutation():
+    """random mutation"""
     global duzen
     i = random.randint(0, len(duzen)-1)
     j = random.randint(0, len(duzen)-1)
